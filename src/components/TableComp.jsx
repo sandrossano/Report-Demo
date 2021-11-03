@@ -170,7 +170,7 @@ let TableComp = (props) => {
   };
 
   return (
-    <div style={{ width: "100%", height: "65vh" }}>
+    <div style={{ width: "100%" }}>
       <div id="grid-wrapper" style={{ width: "100%", height: "100%" }}>
         <div className="test-header">
           <label class="radio-inline">
@@ -233,7 +233,7 @@ let TableComp = (props) => {
           <div
             id="myGrid"
             style={{
-              height: "100%",
+              height: "65vh",
               width: "100%"
             }}
             className="ag-theme-alpine"
