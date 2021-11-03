@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+html {
+  height: 100%;
+  font-size: 100%;
+  overflow: hidden;
+}
+
+.backgroundLogin {
+  background: url("https://i.pinimg.com/originals/fc/b0/72/fcb07201723665e2b3073a21430dd62a.jpg");
+  background-repeat: no-repeat;
+  min-height: 100%;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-size: cover;
+}
+
+.LoginBox {
+  position: absolute;
+  max-width: 300px;
+  width: 100%;
+  background: #fff;
+  border-radius: 4px;
+  padding: 1.187rem 1.875rem 2.062rem 1.875rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.LoginBox .mercury-logologin {
+  /*solo per AWS*/
+  background: url("./logokey.png");
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*filter: invert(100%);*/
+  display: block;
+  width: 230px;
+  height: 90px;
+  margin: 0.875rem auto 0;
+}
+
+.LoginBox .UserLogin {
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: #575674;
+  line-height: 1.062rem;
+}
+.LoginBox .UserLogin .control-Element {
+  display: block;
+  margin-top: 0.875rem;
+  margin-bottom: 0.437rem;
+}
+
+.LoginBox .UserLogin .login-control {
+  background: #eeeef1;
+  border-radius: 4px;
+  border: 0 none;
+  padding: 0.75rem 0.625rem;
+  width: 100%;
+  color: #575674;
+  font-size: 0.875rem;
+}
+.LoginBox .UserLogin .login-control :focus {
+  outline: none;
+  border: 0 none;
+}
+
+.LoginBox .submitLogin {
+  display: block;
+  margin-top: 1.475rem;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  border-radius: 4px;
+  border: 0 none;
+  background: #575674;
+  color: #ffffff;
+  padding: 10px 0;
+}
+.LoginBox .submitLogin :focus {
+  outline: none;
+  border: 0 none;
+}
+.LoginBox .Login-forgetRegister {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  line-height: 17px;
+  color: #575674;
+  padding-left: 4px;
+}
+.LoginBox .Login-forgetRegister .registerUser {
+  color: #575674;
+}
+.LoginBox .Login-forgetRegister .registerUser :hover {
+  color: #575674;
+  text-decoration: none;
+}
+.LoginBox .Login-forgetRegister .forgetPassword {
+  color: #575674;
+}
+.LoginBox .Login-forgetRegister .forgetPassword :hover {
+  color: #575674;
+  text-decoration: none;
+}
+
+.mercuryCopyright {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 2px;
+}
+.mercuryCopyLeft {
+  float: left;
+}
+.mercuryCopyLeft a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.75rem;
+  padding-right: 10px;
+  float: left;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+.mercuryCopyRight {
+  float: right;
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 18px;
+}
+
+.mercuryCopyRight a {
+  text-decoration: none;
+  color: #ff8833;
+}
+
+.clear {
+  clear: both;
+}
+@media only screen and (max-width: 800px) {
+  html {
+    font-size: 80%;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .mercuryCopyLeft {
+    float: none;
+    text-align: center;
+  }
+  .mercuryCopyLeft a {
+    float: none;
+  }
+
+  .mercuryCopyRight {
+    float: none;
+    text-align: center;
+    margin-top: 5px;
+  }
+}
