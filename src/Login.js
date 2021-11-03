@@ -16,6 +16,7 @@ export default function App() {
         <Route path="/dashboard" exact component={App2} />
         <Route path="/pdf" exact component={App2} />
         <Route path="/reports" exact component={App2} />
+        <Route path="/product" exact component={App2} />
 
         {/*      
           <Route path="/product">
