@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
+import { Image } from "react-native";
 import {
   List,
   ListItem,
@@ -17,10 +18,10 @@ import { useHistory } from "react-router";
 
 const items1 = [
   { title: "Dashboard", icon: "dashboard", link: "/" },
-  { title: "Pdf", icon: "pdf", link: "/pdf" },
+  //{ title: "Pdf", icon: "pdf", link: "/pdf" },
   //{ title: "Shops", icon: "shopping-cart-loaded", link: "/shops" },
-  { title: "Product", icon: "bullish", link: "/product" },
-  { title: "Sales", icon: "briefcase", link: "/sales" }
+  { title: "Product", icon: "bullish", link: "/product" }
+  //{ title: "Sales", icon: "briefcase", link: "/sales" }
 ];
 const items2 = [
   { title: "Reports", icon: "presentation", link: "/reports" },
@@ -46,6 +47,17 @@ const DrawerComponent = (props) => {
       onClick={props.toggleDrawerHandler}
       onKeyDown={props.toggleDrawerHandler}
     >
+      <div style={{ padding: "15px 15px 10px 15px" }}>
+        <Image
+          style={{
+            height: 75,
+            resizeMode: "contain"
+          }}
+          source={{
+            uri: "logo.png"
+          }}
+        />
+      </div>
       <List>
         {items1.map((text, index) => (
           <Link to={text.link} style={{ textDecoration: "none" }}>
