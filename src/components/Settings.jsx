@@ -5,8 +5,8 @@ export default function MaterialTableDemo() {
   const [state, setState] = React.useState({
     columns: [
       { title: "Email", field: "email" },
-      { title: "Descrizione", field: "descr" },
-      { title: "Schedule", field: "sched", type: "numeric" },
+      { title: "Impianto", field: "descr" },
+      { title: "Orario", field: "sched", type: "numeric" },
       {
         title: "Active",
         field: "active",
@@ -14,10 +14,10 @@ export default function MaterialTableDemo() {
       }
     ],
     data: [
-      { email: "demo@keytech.srl", descr: "Keytech Srl", sched: 6, active: 34 },
+      { email: "demo@keytech.srl", descr: "MESOLA", sched: 6, active: 34 },
       {
         email: "demo2@keytech.srl",
-        descr: "Keytech Srl 2",
+        descr: "GROTTA AZZURRA",
         sched: 1,
         active: 63
       }

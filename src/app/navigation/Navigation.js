@@ -40,7 +40,7 @@ const items = [
   { title: "Scadenziario", icon: "schedule", link: "/product" },
   // { title: "Sales", icon: "briefcase", link: "/sales" },
   { title: "Reports", icon: "presentation", link: "/reports" },
-  { title: "Settings", icon: "settings", link: "/settings" }
+  { title: "Alert", icon: "email", link: "/settings" }
 ];
 
 const Navigation = () => {

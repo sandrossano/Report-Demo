@@ -169,6 +169,7 @@ let TableComp = (props) => {
   return (
     <div style={{ width: "100%" }}>
       <div id="grid-wrapper" style={{ width: "100%", height: "100%" }}>
+        {/*
         <div className="test-header">
           <label class="radio-inline">
             <input
@@ -217,6 +218,7 @@ let TableComp = (props) => {
             Dopo il 01/01/2018
           </label>
         </div>
+        */}
         {/* 
         <button onClick={() => onBtnExport()}>
           Download file csv (api.exportDataAsCsv())

@@ -25,7 +25,7 @@ const items1 = [
 ];
 const items2 = [
   { title: "Reports", icon: "presentation", link: "/reports" },
-  { title: "Settings", icon: "settings", link: "/settings" }
+  { title: "Email", icon: "email", link: "/settings" }
 ];
 const styles = (theme) => ({
   list: {

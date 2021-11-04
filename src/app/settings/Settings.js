@@ -14,7 +14,7 @@ const Settings = () => {
   return (
     <Container>
       <Page>
-        <Page.Title>Settings</Page.Title>
+        {/*<Page.Title>Settings</Page.Title>*/}
         <Setting />
       </Page>
     </Container>
