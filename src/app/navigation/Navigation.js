@@ -37,7 +37,7 @@ const items = [
   { title: "Dashboard", icon: "dashboard", link: "/" },
   // { title: "Pdf", icon: "pdf", link: "/pdf" },
   //{ title: "Pdf", icon: "shopping-cart-loaded", link: "/pdf" },
-  { title: "Product", icon: "bullish", link: "/product" },
+  { title: "Scadenziario", icon: "schedule", link: "/product" },
   // { title: "Sales", icon: "briefcase", link: "/sales" },
   { title: "Reports", icon: "presentation", link: "/reports" },
   { title: "Settings", icon: "settings", link: "/settings" }

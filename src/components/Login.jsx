@@ -27,7 +27,7 @@ class Login extends React.Component {
     var email = this.state.email;
     var password = this.state.password;
 
-    if (email !== "sandro" || password !== "sandro") {
+    if (email !== "test" || password !== "test") {
       Toast("User o Password errata", "error");
       event.preventDefault();
       window.sessionStorage.setItem("logged", "");

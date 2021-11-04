@@ -11,7 +11,7 @@ html {
 }
 
 .backgroundLogin {
-  background: url("https://i.pinimg.com/originals/fc/b0/72/fcb07201723665e2b3073a21430dd62a.jpg");
+  background: url("https://img.freepik.com/free-vector/abstract-gray-white-geometric-hexagons-background_78474-287.jpg?size=626&ext=jpg");
   background-repeat: no-repeat;
   min-height: 100%;
   width: 100%;
@@ -38,7 +38,7 @@ html {
   background: url("./logokey.png");
   text-align: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   /*filter: invert(100%);*/
   display: block;
   width: 230px;
@@ -113,6 +113,71 @@ html {
   text-decoration: none;
 }
 
+.popup-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 99;
+}
+.popup {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: fixed;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 14px;
+  padding: 20px 30px;
+  max-width: 1160px;
+  width: calc(100% - 20px);
+  max-width: 80%;
+  border-radius: 6px;
+  min-height: 300px;
+}
+.close-popup {
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+.close-popup:after,
+.close-popup:before {
+  content: "";
+  position: absolute;
+  background-color: #1b48c0;
+  width: 2px;
+  height: 20px;
+  top: 0;
+}
+.close-popup:after {
+  transform: rotate(45deg);
+}
+.close-popup:before {
+  transform: rotate(-45deg);
+}
+.editfield {
+  width: 100px;
+  background-color: #4f7fd8;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  font-size: 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 .mercuryCopyright {
   position: absolute;
   left: 0;
@@ -168,4 +233,8 @@ html {
     text-align: center;
     margin-top: 5px;
   }
+}
+.MuiAppBar-colorPrimary {
+  color: #fff;
+  background-color: #3131318c !important;
 }

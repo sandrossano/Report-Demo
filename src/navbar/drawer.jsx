@@ -20,7 +20,7 @@ const items1 = [
   { title: "Dashboard", icon: "dashboard", link: "/" },
   //{ title: "Pdf", icon: "pdf", link: "/pdf" },
   //{ title: "Shops", icon: "shopping-cart-loaded", link: "/shops" },
-  { title: "Product", icon: "bullish", link: "/product" }
+  { title: "Scadenziario", icon: "schedule", link: "/product" }
   //{ title: "Sales", icon: "briefcase", link: "/sales" }
 ];
 const items2 = [

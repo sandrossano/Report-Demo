@@ -27,90 +27,87 @@ let TableComp = (props) => {
     // fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
     //  .then((resp) => resp.json())
     //  .then((data) => updateData(data));
-    var dummy = [
+    const dummy = [
       {
-        athlete: "Michael Phelps",
-        age: 23,
-        country: "United States",
-        year: 2008,
-        date: "24/08/2008",
-        sport: "Swimming",
-        gold: 8,
-        silver: 0,
-        bronze: 0,
-        total: 8
+        ID: 1,
+        PlantId: "JPDAMRC11",
+        Local: "ACERRA",
+        Addr: "STRADA PROV. ACERRA-POMOGLIANO ",
+        TpServ: "IDRICO",
+        Last: "01/09/2021",
+        Prox: "31/08/2026"
       },
       {
-        athlete: "Michael Phelps",
-        age: 19,
-        country: "United States",
-        year: 2004,
-        date: "29/08/2004",
-        sport: "Swimming",
-        gold: 6,
-        silver: 0,
-        bronze: 2,
-        total: 8
+        ID: 2,
+        PlantId: "JANCAST01",
+        Local: "ANACAPRI",
+        Addr: "SALITA CAPOSCURO",
+        TpServ: "IDRICO",
+        Last: "13/02/2019",
+        Prox: "12/02/2024"
       },
       {
-        athlete: "Michael Phelps",
-        age: 27,
-        country: "United States",
-        year: 2012,
-        date: "12/08/2012",
-        sport: "Swimming",
-        gold: 4,
-        silver: 2,
-        bronze: 0,
-        total: 6
+        ID: 3,
+        PlantId: "JANCFST01-FE01",
+        Local: "ANACAPRI",
+        Addr: "V LA FOLLICARA",
+        TpServ: "FOGRNARIO",
+        Last: "26/04/2017",
+        Prox: "25/04/2022"
       },
       {
-        athlete: "Natalie Coughlin",
-        age: 25,
-        country: "United States",
-        year: 2008,
-        date: "24/08/2008",
-        sport: "Swimming",
-        gold: 1,
-        silver: 2,
-        bronze: 3,
-        total: 6
+        ID: 4,
+        PlantId: "JANCFST01-FE02",
+        Local: "ANACAPRI",
+        Addr: "V LA FOLLICARA",
+        TpServ: "FOGRNARIO",
+        Last: "26/04/2017",
+        Prox: "25/04/2022"
       },
       {
-        athlete: "Aleksey Nemov",
-        age: 24,
-        country: "Russia",
-        year: 2000,
-        date: "01/10/2000",
-        sport: "Gymnastics",
-        gold: 2,
-        silver: 1,
-        bronze: 3,
-        total: 6
+        ID: 5,
+        PlantId: "JANCDEP02",
+        Local: "ANACAPRI",
+        Addr: "LOCALITA LA SELVA",
+        TpServ: "DEPURATORE",
+        Last: "02/03/2021",
+        Prox: "02/03/2023"
       },
       {
-        athlete: "Alicia Coutts",
-        age: 24,
-        country: "Australia",
-        year: 2012,
-        date: "12/08/2012",
-        sport: "Swimming",
-        gold: 1,
-        silver: 3,
-        bronze: 1,
-        total: 5
+        ID: 6,
+        PlantId: "JANCFST06",
+        Local: "ANACAPRI",
+        Addr: "V GROTTA AZZURRA",
+        TpServ: "FOGRNARIO",
+        Last: "02/03/2021",
+        Prox: "01/03/2026"
       },
       {
-        athlete: "Missy Franklin",
-        age: 17,
-        country: "United States",
-        year: 2012,
-        date: "12/08/2012",
-        sport: "Swimming",
-        gold: 4,
-        silver: 0,
-        bronze: 1,
-        total: 5
+        ID: 7,
+        PlantId: "JANCFST05",
+        Local: "ANACAPRI",
+        Addr: "V CANNULA",
+        TpServ: "FOGRNARIO",
+        Last: "01/09/2021",
+        Prox: "31/08/2026"
+      },
+      {
+        ID: 8,
+        PlantId: "JANCFST04",
+        Local: "ANACAPRI",
+        Addr: "V MESOLA ",
+        TpServ: "FOGRNARIO",
+        Last: "01/09/2021",
+        Prox: "31/08/2026"
+      },
+      {
+        ID: 9,
+        PlantId: "JAGRAST01",
+        Local: "ANGRI",
+        Addr: "V MONTE TACCARO SNC",
+        TpServ: "IDRICO",
+        Last: "02/03/2021",
+        Prox: "02/03/2024"
       }
     ];
     updateData(dummy);
@@ -258,26 +255,35 @@ let TableComp = (props) => {
                 }
               }}
             >
-              <AgGridColumn field="athlete" minWidth={100} />
               <AgGridColumn
-                field="age"
+                headerName="Impianto"
+                field="PlantId"
+                minWidth={100}
+              />
+              <AgGridColumn
+                field="Local"
+                headerName="Località"
                 filter="agNumberColumnFilter"
                 maxWidth={200}
               />
-              <AgGridColumn field="country" />
+              <AgGridColumn field="Addr" headerName="Indirizzo Fornitura" />
               <AgGridColumn
-                field="year"
+                field="TpServ"
+                headerName="Tipo Fornitura"
                 maxWidth={200}
                 filter="agNumberColumnFilter"
               />
               <AgGridColumn
-                field="date"
+                field="Last"
                 filter="agDateColumnFilter"
+                headerName="Ultima Verifica"
                 filterParams={dateFilterParams}
               />
-              <AgGridColumn field="gold" filter="agNumberColumnFilter" />
-              <AgGridColumn field="silver" filter="agNumberColumnFilter" />
-              <AgGridColumn field="bronze" filter="agNumberColumnFilter" />
+              <AgGridColumn
+                field="Prox"
+                headerName="Prossima Verifica"
+                filter="agNumberColumnFilter"
+              />
             </AgGridReact>
           </div>
         </div>
