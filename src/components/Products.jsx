@@ -1,6 +1,10 @@
 import React from "react";
 
-import DataGrid, { Column, MasterDetail } from "devextreme-react/data-grid";
+import DataGrid, {
+  Column,
+  MasterDetail,
+  HeaderFilter
+} from "devextreme-react/data-grid";
 import { Template } from "devextreme-react/core/template";
 
 import Button from "devextreme-react/button";
@@ -14,8 +18,17 @@ class Products extends React.Component {
     super(props);
     this.calndar = {};
     this.state = {
-      visiblePopup: false
+      visiblePopup: false,
+      hh: 5,
+      date1: "2021-09-01",
+      date2: "2026-08-31"
     };
+  }
+  onTodoChange(id, value) {
+    if (id === "hh") this.setState({ hh: value });
+    if (id === "date1") this.setState({ date1: value });
+    if (id === "date2") this.setState({ date2: value });
+    console.log(value);
   }
   render() {
     return (
@@ -26,6 +39,7 @@ class Products extends React.Component {
           keyExpr={"ID"}
           showBorders={true}
         >
+          <HeaderFilter visible={true} />
           <Column dataField={"PlantId"} caption={"Id Impianto"} />
           <Column dataField={"Local"} caption={"Località Fornitura"} />
           <Column dataField={"Addr"} caption={"Indirizzo Fornitura"} />
@@ -40,7 +54,11 @@ class Products extends React.Component {
             caption={"Prossima Verifica"}
             //dataType={"date"}
           />
-          <MasterDetail enabled={true} template={"buttons"} />
+          <MasterDetail
+            enabled={true}
+            // component={MasterDetailGrid}
+            template={"buttons"}
+          />
           <Template name={"buttons"}>
             <Button
               text={"Edit"}
@@ -74,33 +92,71 @@ class Products extends React.Component {
                 className="close-popup"
               ></button>
               <div className="popup__content">
-                <span className="labelfield">
-                  {new Date().getDate()}-{new Date().getMonth()}-
-                  {new Date().getFullYear()}
-                </span>
+                <span className="labelfield">Impianto:</span>
+                <span>&nbsp; GROTTA AZZURRA</span>
                 <br />
                 <hr />
                 <div style={{ marginBottom: "-20px" }}>
-                  {" "}
-                  <span className="labelfield">Duration:</span>
+                  <span className="labelfield">Ultima Verifica:</span>
+                  &nbsp;
+                  <div className="center" style={{ display: "inline" }}>
+                    <input
+                      className="inputdate"
+                      name="duration"
+                      type="date"
+                      //placeholder="Num. Anni"
+                      //width="50px"
+                      value={this.state.date1}
+                      onChange={(e) =>
+                        this.onTodoChange("date1", e.target.value)
+                      }
+                    />
+                  </div>
+                </div>
+                <br />
+                <hr />
+                <div style={{ marginBottom: "-20px" }}>
+                  <span className="labelfield">Anni Scadenza:</span>
+                  &nbsp;
                   <div className="center" style={{ display: "inline" }}>
                     <input
                       className="inputdurat"
                       name="duration"
                       type="number"
-                      placeholder="hh"
+                      placeholder="Num. Anni"
+                      //width="50px"
                       value={this.state.hh}
                       onChange={(e) => this.onTodoChange("hh", e.target.value)}
                     />
-                    <b>:</b>
+                  </div>
+                </div>
+                <br />
+                <hr />
+                <span className="labelfield">Scar. Atm. </span>
+                &nbsp;
+                <input
+                  type="checkbox"
+                  id="vehicle1"
+                  name="vehicle1"
+                  value="Bike"
+                />
+                <br />
+                <hr />
+                <div style={{ marginBottom: "-20px" }}>
+                  <span className="labelfield">Prossima Verifica:</span>
+                  &nbsp;
+                  <div className="center" style={{ display: "inline" }}>
                     <input
-                      value={this.state.mm}
-                      className="inputduratmm"
-                      name="duration-mm"
-                      type="number"
-                      placeholder="mm"
-                      onChange={(e) => this.onTodoChange("mm", e.target.value)}
-                      //onChange={(e) => this.onTodoChange("1", e.target.value)}
+                      className="inputdate2"
+                      name="duration"
+                      type="date"
+                      //placeholder="Num. Anni"
+                      //width="50px"
+                      readOnly
+                      value={this.state.date2}
+                      onChange={(e) =>
+                        this.onTodoChange("date2", e.target.value)
+                      }
                     />
                   </div>
                 </div>

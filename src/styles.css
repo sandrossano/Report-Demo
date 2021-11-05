@@ -97,3 +97,6 @@
 .CardCustom {
   max-width: 15px;
 }
+.labelfield {
+  font-weight: bold;
+}

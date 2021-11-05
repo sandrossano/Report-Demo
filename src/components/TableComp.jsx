@@ -20,7 +20,7 @@ let TableComp = (props) => {
     window.agGrid = params.api;
 
     const updateData = (data) => {
-      document.querySelector("#everyone").checked = true;
+      // document.querySelector("#everyone").checked = true;
       setRowData(data);
     };
 

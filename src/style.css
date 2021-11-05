@@ -9,7 +9,26 @@ html {
   font-size: 100%;
   overflow: hidden;
 }
-
+.inputdurat {
+  width: 80px;
+}
+.inputdate {
+  width: 150px;
+}
+.inputnote {
+  width: 100%;
+}
+.inputdate2 {
+  width: 85px;
+  background-color: #7272724b;
+  border: 1px solid black;
+  padding: 2px;
+}
+.inputdate2::-webkit-inner-spin-button,
+.inputdate2::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
 .backgroundLogin {
   background: url("https://img.freepik.com/free-vector/abstract-gray-white-geometric-hexagons-background_78474-287.jpg?size=626&ext=jpg");
   background-repeat: no-repeat;
