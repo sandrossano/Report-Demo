@@ -5,8 +5,8 @@ const employees = [
     Local: "ACERRA",
     Addr: "STRADA PROV. ACERRA-POMOGLIANO ",
     TpServ: "IDRICO",
-    Last: "01/09/2021",
-    Prox: "31/08/2026"
+    Last: "2021/09/01",
+    Prox: "2026/08/31"
   },
   {
     ID: 2,
@@ -14,8 +14,8 @@ const employees = [
     Local: "ANACAPRI",
     Addr: "SALITA CAPOSCURO",
     TpServ: "IDRICO",
-    Last: "13/02/2019",
-    Prox: "12/02/2024"
+    Last: "2019/02/13",
+    Prox: "2024/02/12"
   },
   {
     ID: 3,
@@ -23,8 +23,8 @@ const employees = [
     Local: "ANACAPRI",
     Addr: "V LA FOLLICARA",
     TpServ: "FOGRNARIO",
-    Last: "26/04/2017",
-    Prox: "25/04/2022"
+    Last: "2017/04/26",
+    Prox: "2022/04/25"
   },
   {
     ID: 4,
@@ -32,8 +32,8 @@ const employees = [
     Local: "ANACAPRI",
     Addr: "V LA FOLLICARA",
     TpServ: "FOGRNARIO",
-    Last: "26/04/2017",
-    Prox: "25/04/2022"
+    Last: "2017/04/26",
+    Prox: "2022/04/25"
   },
   {
     ID: 5,
@@ -41,8 +41,8 @@ const employees = [
     Local: "ANACAPRI",
     Addr: "LOCALITA LA SELVA",
     TpServ: "DEPURATORE",
-    Last: "02/03/2021",
-    Prox: "02/03/2023"
+    Last: "2021/03/02",
+    Prox: "2023/03/02"
   },
   {
     ID: 6,
@@ -50,8 +50,8 @@ const employees = [
     Local: "ANACAPRI",
     Addr: "V GROTTA AZZURRA",
     TpServ: "FOGRNARIO",
-    Last: "02/03/2021",
-    Prox: "01/03/2026"
+    Last: "2021/03/02",
+    Prox: "2026/03/01"
   },
   {
     ID: 7,
@@ -59,8 +59,8 @@ const employees = [
     Local: "ANACAPRI",
     Addr: "V CANNULA",
     TpServ: "FOGRNARIO",
-    Last: "01/09/2021",
-    Prox: "31/08/2026"
+    Last: "2021/09/01",
+    Prox: "2026/08/31"
   },
   {
     ID: 8,
@@ -68,8 +68,8 @@ const employees = [
     Local: "ANACAPRI",
     Addr: "V MESOLA ",
     TpServ: "FOGRNARIO",
-    Last: "01/09/2021",
-    Prox: "31/08/2026"
+    Last: "2021/09/01",
+    Prox: "2026/08/31"
   },
   {
     ID: 9,
@@ -77,8 +77,8 @@ const employees = [
     Local: "ANGRI",
     Addr: "V MONTE TACCARO SNC",
     TpServ: "IDRICO",
-    Last: "02/03/2021",
-    Prox: "02/03/2024"
+    Last: "2021/03/02",
+    Prox: "2024/03/02"
   }
 ];
 

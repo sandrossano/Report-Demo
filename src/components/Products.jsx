@@ -43,6 +43,7 @@ class Products extends React.Component {
           columnAutoWidth={false}
           columnHidingEnabled={true}
           showBorders={true}
+          allowColumnReordering={true}
         >
           <ColumnChooser enabled={true} mode="select" />
           {/*<SearchPanel visible={true} />*/}
@@ -61,11 +62,13 @@ class Products extends React.Component {
             dataField={"Last"}
             caption={"Ultima Verifica"}
             dataType={"date"}
+            format="dd/MM/yyyy"
           />
           <Column
             dataField={"Prox"}
             caption={"Prossima Verifica"}
             dataType={"date"}
+            format="dd/MM/yyyy"
           />
           <MasterDetail
             enabled={true}
