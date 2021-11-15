@@ -5,6 +5,7 @@ import DataGrid, {
   MasterDetail,
   HeaderFilter,
   SearchPanel,
+  ColumnChooser,
   FilterRow
 } from "devextreme-react/data-grid";
 import { Template } from "devextreme-react/core/template";
@@ -40,14 +41,21 @@ class Products extends React.Component {
           dataSource={employees}
           keyExpr={"ID"}
           columnAutoWidth={false}
+          columnHidingEnabled={true}
           showBorders={true}
         >
+          <ColumnChooser enabled={true} mode="select" />
           {/*<SearchPanel visible={true} />*/}
           <HeaderFilter visible={true} />
+          <SearchPanel visible={true} />
           <FilterRow visible={true} />
           <Column dataField={"PlantId"} caption={"Id Impianto"} />
           <Column dataField={"Local"} caption={"Località Fornitura"} />
-          <Column dataField={"Addr"} caption={"Indirizzo Fornitura"} />
+          <Column
+            hidingPriority={0}
+            dataField={"Addr"}
+            caption={"Indirizzo Fornitura"}
+          />
           <Column dataField={"TpServ"} caption={"Tipo Servizio"} />
           <Column
             dataField={"Last"}

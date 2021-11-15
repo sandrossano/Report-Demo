@@ -257,3 +257,16 @@ html {
   color: #fff;
   background-color: #3131318c !important;
 }
+.dx-datagrid {
+  background-color: #fff0;
+  margin-top: -40px;
+}
+.dx-toolbar {
+  background-color: #fff0;
+}
+.dx-datagrid-headers {
+  background-color: #fff;
+}
+.dx-datagrid-rowsview {
+  background-color: #fff;
+}
