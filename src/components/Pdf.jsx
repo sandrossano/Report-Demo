@@ -7,7 +7,7 @@ import PdfSample from "../constants/PdfSample";
 import Iframe from "react-iframe";
 import PDFViewer from "pdf-viewer-reactjs";
 import base64 from "base64topdf";
-const download = require("download-pdf");
+//const download = require("download-pdf");
 
 class Pdf extends React.Component {
   constructor(props) {

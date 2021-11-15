@@ -3,7 +3,9 @@ import React from "react";
 import DataGrid, {
   Column,
   MasterDetail,
-  HeaderFilter
+  HeaderFilter,
+  SearchPanel,
+  FilterRow
 } from "devextreme-react/data-grid";
 import { Template } from "devextreme-react/core/template";
 
@@ -37,9 +39,12 @@ class Products extends React.Component {
           id={"grid-container"}
           dataSource={employees}
           keyExpr={"ID"}
+          columnAutoWidth={true}
           showBorders={true}
         >
+          <SearchPanel visible={true} />
           <HeaderFilter visible={true} />
+          <FilterRow visible={true} />
           <Column dataField={"PlantId"} caption={"Id Impianto"} />
           <Column dataField={"Local"} caption={"Località Fornitura"} />
           <Column dataField={"Addr"} caption={"Indirizzo Fornitura"} />
@@ -47,12 +52,12 @@ class Products extends React.Component {
           <Column
             dataField={"Last"}
             caption={"Ultima Verifica"}
-            //dataType={"date"}
+            dataType={"date"}
           />
           <Column
             dataField={"Prox"}
             caption={"Prossima Verifica"}
-            //dataType={"date"}
+            dataType={"date"}
           />
           <MasterDetail
             enabled={true}
