@@ -39,10 +39,10 @@ class Products extends React.Component {
           id={"grid-container"}
           dataSource={employees}
           keyExpr={"ID"}
-          columnAutoWidth={true}
+          columnAutoWidth={false}
           showBorders={true}
         >
-          <SearchPanel visible={true} />
+          {/*<SearchPanel visible={true} />*/}
           <HeaderFilter visible={true} />
           <FilterRow visible={true} />
           <Column dataField={"PlantId"} caption={"Id Impianto"} />
