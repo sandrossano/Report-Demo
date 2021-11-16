@@ -8,6 +8,7 @@ import DataGrid, {
   ColumnChooser,
   FilterRow,
   Toolbar,
+  FilterPanel,
   Item
 } from "devextreme-react/data-grid";
 import { Template } from "devextreme-react/core/template";
@@ -32,7 +33,9 @@ class Reports extends React.Component {
       hh: 5,
       date1: "2021-09-01",
       date2: "2026-08-31",
-      valueCheck: "full"
+      valueCheck: "all",
+      employeesOld: employees,
+      employees: employees
     };
   }
   onTodoChange(id, value) {
@@ -43,6 +46,35 @@ class Reports extends React.Component {
   }
   checkChange(value) {
     this.setState({ valueCheck: value });
+    this.setState({ filterValue: [["Stato", "=", "ok"]] });
+    var date = new Date();
+    var newDate = new Date();
+    newDate.setFullYear("2099");
+    if (value === "full")
+      newDate = new Date(date.setMonth(date.getMonth() + 3));
+    var dateString =
+      newDate.getUTCFullYear() +
+      "/" +
+      ("0" + (newDate.getUTCMonth() + 1)).slice(-2) +
+      "/" +
+      newDate.getUTCDate();
+    var dateStringOld =
+      date.getUTCFullYear() +
+      "/" +
+      ("0" + (date.getUTCMonth() + 1)).slice(-2) +
+      "/" +
+      date.getUTCDate();
+    var filtered = this.state.employeesOld.filter(
+      (list) => list.Prox <= dateString
+    );
+    filtered = filtered.filter((list) => list.Prox >= dateStringOld);
+    if (value === "all") {
+      filtered = this.state.employeesOld;
+    }
+    this.setState({
+      employees: filtered
+    });
+    console.log(dateString);
     console.log(value);
   }
 
@@ -88,7 +120,7 @@ class Reports extends React.Component {
         </div>
         <DataGrid
           id={"grid-container"}
-          dataSource={employees}
+          dataSource={this.state.employees}
           keyExpr={"ID"}
           columnAutoWidth={false}
           columnHidingEnabled={true}
@@ -99,6 +131,7 @@ class Reports extends React.Component {
           {/*<SearchPanel visible={true} />*/}
           <HeaderFilter visible={true} />
           <SearchPanel visible={true} width={200} />
+          <FilterPanel visible={true} />
           <FilterRow visible={true} />
           <Column
             dataField="Stato"
