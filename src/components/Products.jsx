@@ -264,7 +264,7 @@ class Products extends React.Component {
   const exportGrid = React.useCallback(() => {
     const doc = new jsPDF();
     const dataGrid = dataGridRef.current.instance;*/
-  exportGrid = (e) => {
+  /*exportGrid = (e) => {
     const doc = new jsPDF();
     const dataGrid = e.current.instance;
     exportDataGridToPdf({
@@ -274,7 +274,7 @@ class Products extends React.Component {
       doc.save("Customers.pdf");
     });
   };
-
+*/
   clickHandler = (e) => {
     console.log("call Edit_Window");
   };
