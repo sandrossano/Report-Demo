@@ -12,10 +12,10 @@ const Container = styled.div`
 const Product = () => {
   return (
     <Container>
-      <Page>
+      <div style={{ padding: "0 10px" }}>
         <Page.Title>Scandenziario</Page.Title>
         <Products />
-      </Page>
+      </div>
     </Container>
   );
 };

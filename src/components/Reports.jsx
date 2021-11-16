@@ -16,12 +16,14 @@ import "jspdf-autotable";
 //import { exportDataGrid as exportDataGridToPdf } from "devextreme/pdf_exporter";
 import Icon from "./Icon";
 import Button from "devextreme-react/button";
-
 import service from "./json.js";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import { FormControl, FormControlLabel } from "@material-ui/core";
 
 const employees = service.getEmployees();
 
-class Products extends React.Component {
+class Reports extends React.Component {
   constructor(props) {
     super(props);
     this.calndar = {};
@@ -29,13 +31,18 @@ class Products extends React.Component {
       visiblePopup: false,
       hh: 5,
       date1: "2021-09-01",
-      date2: "2026-08-31"
+      date2: "2026-08-31",
+      valueCheck: "full"
     };
   }
   onTodoChange(id, value) {
     if (id === "hh") this.setState({ hh: value });
     if (id === "date1") this.setState({ date1: value });
     if (id === "date2") this.setState({ date2: value });
+    console.log(value);
+  }
+  checkChange(value) {
+    this.setState({ valueCheck: value });
     console.log(value);
   }
 
@@ -51,9 +58,34 @@ class Products extends React.Component {
         />
       );
     }
-
+    const filterValue = [
+      ["Stato", "<>", "ok"]
+      //      "or",
+      //      ["Stato", "=", "error--v1"]
+    ];
     return (
       <div>
+        <div className="checkboxReport">
+          <FormControl>
+            <RadioGroup
+              row
+              value={this.state.valueCheck}
+              onChange={(e) => this.checkChange(e.target.value)}
+            >
+              <FormControlLabel
+                value="full"
+                label="Prossimi 3 Mesi"
+                control={<Radio />}
+              />
+              <FormControlLabel
+                value="half"
+                label="Future Scadenze"
+                control={<Radio />}
+              />
+              <FormControlLabel value="all" label="Tutti" control={<Radio />} />
+            </RadioGroup>
+          </FormControl>
+        </div>
         <DataGrid
           id={"grid-container"}
           dataSource={employees}
@@ -62,6 +94,7 @@ class Products extends React.Component {
           columnHidingEnabled={true}
           showBorders={true}
           allowColumnReordering={true}
+          defaultFilterValue={filterValue}
         >
           {/*<SearchPanel visible={true} />*/}
           <HeaderFilter visible={true} />
@@ -109,6 +142,7 @@ class Products extends React.Component {
                 onClick={(e) => this.exportGrid(e)}
               />
             </Item>*/}
+            <Item location="before"></Item>
             <Item>
               <Button
                 icon="email"
@@ -264,20 +298,9 @@ class Products extends React.Component {
   const exportGrid = React.useCallback(() => {
     const doc = new jsPDF();
     const dataGrid = dataGridRef.current.instance;*/
-  exportGrid = (e) => {
-    const doc = new jsPDF();
-    const dataGrid = e.current.instance;
-    exportDataGridToPdf({
-      jsPDFDocument: doc,
-      component: dataGrid
-    }).then(() => {
-      doc.save("Customers.pdf");
-    });
-  };
-
   clickHandler = (e) => {
     console.log("call Edit_Window");
   };
 }
 
-export default Products;
+export default Reports;

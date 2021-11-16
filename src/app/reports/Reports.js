@@ -13,10 +13,10 @@ const Container2 = styled.div`
 const Reports = () => {
   return (
     <Container2 fluid style={{ overflowY: "scroll" }}>
-      <Page>
+      <div style={{ padding: "0 10px" }}>
         <Page.Title>Reports</Page.Title>
         <MainSection />
-      </Page>
+      </div>
     </Container2>
   );
 };

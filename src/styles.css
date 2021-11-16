@@ -100,3 +100,6 @@
 .labelfield {
   font-weight: bold;
 }
+.checkboxReport {
+  text-align: center !important;
+}

@@ -259,7 +259,7 @@ html {
 }
 .dx-datagrid {
   background-color: #fff0;
-  margin-top: -40px;
+  /*margin-top: -40px;*/
 }
 .dx-toolbar {
   background-color: #fff0;
@@ -269,4 +269,7 @@ html {
 }
 .dx-datagrid-rowsview {
   background-color: #fff;
+}
+.dx-toolbar .dx-toolbar-items-container {
+  height: 50px !important;
 }

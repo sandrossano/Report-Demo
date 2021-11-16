@@ -19,7 +19,7 @@ import Settings from "./app/settings/Settings";
 import MainSection from "./components/MainSection";
 import { store } from "./store";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import TableComp from "./components/TableComp";
+//import TableComp from "./components/TableComp";
 import {
   faCoffee,
   faHome,
@@ -36,37 +36,6 @@ const Container2 = styled.div`
   padding-bottom: 50px;
 `;
 
-{
-  /*
-export default function App() {
-  return (
-    <Provider store={store}>
-      <div className="App ">
-        <CssBaseline />
-        <Navbar />
-        {/* <TableComp />
-         */
-}
-{
-  /*
-        <Container fluid>
-          <Row>
-            {/*<Col xs={1} id="sidebar-wrapper">
-                 <SideBar />
-               
-            </Col>*/
-}
-{
-  /*}         <Col id="page-content-wrapper">
-              <MainSection />
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    </Provider>
-  );
-}*/
-}
 export default function App() {
   return (
     <Router>
@@ -95,7 +64,8 @@ export default function App() {
             <Settings />
           </Route>
           <Route path="/">
-            <Dashboard />
+            <Product />
+            {/*<Dashboard />*/}
           </Route>
         </Switch>
       </Container2>

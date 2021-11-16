@@ -1,6 +1,7 @@
 const employees = [
   {
     ID: 1,
+    Stato: "ok",
     PlantId: "JPDAMRC11",
     Local: "ACERRA",
     Addr: "STRADA PROV. ACERRA-POMOGLIANO ",
@@ -10,6 +11,7 @@ const employees = [
   },
   {
     ID: 2,
+    Stato: "error--v1",
     PlantId: "JANCAST01",
     Local: "ANACAPRI",
     Addr: "SALITA CAPOSCURO",
@@ -19,6 +21,7 @@ const employees = [
   },
   {
     ID: 3,
+    Stato: "high-priority",
     PlantId: "JANCFST01-FE01",
     Local: "ANACAPRI",
     Addr: "V LA FOLLICARA",
@@ -28,6 +31,7 @@ const employees = [
   },
   {
     ID: 4,
+    Stato: "ok",
     PlantId: "JANCFST01-FE02",
     Local: "ANACAPRI",
     Addr: "V LA FOLLICARA",
@@ -37,6 +41,7 @@ const employees = [
   },
   {
     ID: 5,
+    Stato: "high-priority",
     PlantId: "JANCDEP02",
     Local: "ANACAPRI",
     Addr: "LOCALITA LA SELVA",
@@ -46,6 +51,7 @@ const employees = [
   },
   {
     ID: 6,
+    Stato: "ok",
     PlantId: "JANCFST06",
     Local: "ANACAPRI",
     Addr: "V GROTTA AZZURRA",
@@ -55,6 +61,7 @@ const employees = [
   },
   {
     ID: 7,
+    Stato: "error--v1",
     PlantId: "JANCFST05",
     Local: "ANACAPRI",
     Addr: "V CANNULA",
@@ -64,6 +71,7 @@ const employees = [
   },
   {
     ID: 8,
+    Stato: "ok",
     PlantId: "JANCFST04",
     Local: "ANACAPRI",
     Addr: "V MESOLA ",
@@ -73,6 +81,7 @@ const employees = [
   },
   {
     ID: 9,
+    Stato: "high-priority",
     PlantId: "JAGRAST01",
     Local: "ANGRI",
     Addr: "V MONTE TACCARO SNC",

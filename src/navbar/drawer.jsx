@@ -17,15 +17,16 @@ import Icon from "../components/Icon";
 import { useHistory } from "react-router";
 
 const items1 = [
-  { title: "Dashboard", icon: "dashboard", link: "/" },
+  //  { title: "Dashboard", icon: "dashboard", link: "/" },
   //{ title: "Pdf", icon: "pdf", link: "/pdf" },
   //{ title: "Shops", icon: "shopping-cart-loaded", link: "/shops" },
-  { title: "Scadenziario", icon: "schedule", link: "/product" }
+  { title: "Scadenziario", icon: "schedule", link: "/product" },
+  { title: "Reports", icon: "presentation", link: "/reports" }
   //{ title: "Sales", icon: "briefcase", link: "/sales" }
 ];
 const items2 = [
-  { title: "Reports", icon: "presentation", link: "/reports" },
-  { title: "Email", icon: "email", link: "/settings" }
+  { title: "Alert", icon: "email", link: "/settings" },
+  { title: "Referenti", icon: "user", link: "/sales" }
 ];
 const styles = (theme) => ({
   list: {
