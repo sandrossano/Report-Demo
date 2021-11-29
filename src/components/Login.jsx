@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Toast from "toast-me";
+import Button from "react-bootstrap-button-loader";
 
 class Login extends React.Component {
   constructor(props) {
@@ -108,8 +109,13 @@ class Login extends React.Component {
                 onChange={(event) => this.inputChangedHandler(event)}
               />
             </div>
-            <input type="submit" className="submitLogin" value="Login" />
-
+            <Button
+              className="submitLogin"
+              loading={this.state.loading}
+              onClick={this.handleSubmit}
+            >
+              Login
+            </Button>
             {/*
             <Link
               to="/Dashboard"
@@ -119,14 +125,14 @@ class Login extends React.Component {
               <button className="submitLogin">Login</button>
             </Link> */}
 
-            <div className="Login-forgetRegister">
+            {/*  <div className="Login-forgetRegister">
               <a className="registerUser float-left" href="">
                 Register
               </a>
               <a className="forgetPassword float-right" href="">
                 Forget Password ?
               </a>
-            </div>
+            </div>*/}
           </form>
           <div className="clear" />
         </div>

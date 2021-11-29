@@ -27,6 +27,7 @@
     "react": "16.14.0",
     "react-avatar": "3.9.7",
     "react-bootstrap": "1.4.0",
+    "react-bootstrap-button-loader": "2.0.0",
     "react-dom": "16.14.0",
     "react-iframe": "1.8.0",
     "react-loading-overlay": "1.0.1",
