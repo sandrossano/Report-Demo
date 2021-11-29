@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-
+import axios from "axios";
 import { Link } from "react-router-dom";
 import Toast from "toast-me";
 
@@ -8,7 +8,9 @@ class Login extends React.Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      loading: false,
+      check: false
     };
 
     if (window.sessionStorage.getItem("logged") === "X") {
@@ -23,20 +25,58 @@ class Login extends React.Component {
     this.setState({ [event.target.id]: event.currentTarget.value });
   };
 
-  handleSubmit(event) {
+  async getLogin() {
     var email = this.state.email;
     var password = this.state.password;
+    var link =
+      "https://keytech-demo-backend.herokuapp.com/api/login/" +
+      email +
+      "~" +
+      password;
+    var res = axios.get(link).then((result) => {
+      res = result;
+      try {
+        if (res.data[0] !== undefined && res.data[0].email === email) {
+          window.sessionStorage.setItem("logged", "X");
+          window.sessionStorage.setItem("user", email);
+          this.setState({ check: true });
+          this.setState({ loading: false });
+          this.props.history.push("/dashboard");
+          return this.state.check;
+        } else {
+          Toast("User o Password errata", "error");
+          //this.event.preventDefault();
+          window.sessionStorage.setItem("logged", "");
+          this.setState({ check: false });
+          this.setState({ loading: false });
+          return this.state.check;
+        }
+      } catch {
+        Toast("User o Password errata", "error");
+        //this.event.preventDefault();
+        window.sessionStorage.setItem("logged", "");
+        this.setState({ check: false });
+        this.setState({ loading: false });
+        return this.state.check;
+      }
+    });
+    return res;
+  }
 
-    if (email !== "test" || password !== "test") {
-      Toast("User o Password errata", "error");
-      event.preventDefault();
-      window.sessionStorage.setItem("logged", "");
-      return false;
-    } else {
+  handleSubmit(event) {
+    this.setState({ loading: true });
+    var email = this.state.email;
+    var password = this.state.password;
+    if (email === "test" && password === "test") {
       window.sessionStorage.setItem("logged", "X");
       window.sessionStorage.setItem("user", email);
-      return true;
+      this.setState({ check: true });
+      this.props.history.push("/dashboard");
+      return this.state.check;
     }
+    event.preventDefault();
+    var res = this.getLogin();
+    return false;
   }
   render() {
     return (
