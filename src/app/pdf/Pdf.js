@@ -4,16 +4,16 @@ import COLORS from "../../constants/colors";
 import Page from "../../components/Page";
 import Pdf from "../../components/Pdf";
 
-const Container = styled.div``;
-
+const Container2 = styled.div`
+  height: 105vh;
+  padding-bottom: 250px;
+`;
 const Shops = () => {
   return (
-    <Container>
-      <Page>
-        <Page.Title>Pdf</Page.Title>
-        <Pdf />
-      </Page>
-    </Container>
+    <Container2 style={{ overflowY: "scroll" }}>
+      <Pdf />
+      {/*<Page>{/*<Page.Title>Pdf</Page.Title>*</Page>*/}
+    </Container2>
   );
 };
 
