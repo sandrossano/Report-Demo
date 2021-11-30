@@ -19,7 +19,7 @@ import CryptoJS from "crypto-js";
 
 const items1 = [
   //  { title: "Dashboard", icon: "dashboard", link: "/" },
-  //{ title: "Pdf", icon: "pdf", link: "/pdf" },
+  { title: "Pdf", icon: "pdf", link: "/pdf" },
   //{ title: "Shops", icon: "shopping-cart-loaded", link: "/shops" },
   { title: "Scadenziario", icon: "schedule", link: "/product" },
   { title: "Reports", icon: "presentation", link: "/reports" }
@@ -100,7 +100,7 @@ const DrawerComponent = (props) => {
           button
           key={"Torna al Portale"}
           onClick={() => {
-            sessionStorage.clear();
+            //sessionStorage.clear();
             //window.open("/login", "_self");
             var d = new Date();
             var link =

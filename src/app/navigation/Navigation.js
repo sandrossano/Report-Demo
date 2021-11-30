@@ -35,11 +35,12 @@ const NavigationItem = styled.div`
 
 const items = [
   //{ title: "Dashboard", icon: "dashboard", link: "/" },
-  // { title: "Pdf", icon: "pdf", link: "/pdf" },
+
   //{ title: "Pdf", icon: "shopping-cart-loaded", link: "/pdf" },
   { title: "Scadenziario", icon: "schedule", link: "/product" },
   // { title: "Sales", icon: "briefcase", link: "/sales" },
   { title: "Reports", icon: "presentation", link: "/reports" },
+  { title: "Pdf", icon: "pdf", link: "/pdf" },
   { title: "Alert", icon: "email", link: "/settings" },
   { title: "Referenti", icon: "user", link: "/sales" }
 ];

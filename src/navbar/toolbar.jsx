@@ -154,7 +154,7 @@ const ToolbarComponent = (props) => {
 
       <MenuItem
         onClick={() => {
-          sessionStorage.clear();
+          //sessionStorage.clear();
           //window.open("/login", "_self");
           var d = new Date();
           var link =
@@ -257,7 +257,7 @@ const ToolbarComponent = (props) => {
               color="inherit"
               style={{ marginLeft: "10px" }}
               onClick={() => {
-                sessionStorage.clear();
+                //sessionStorage.clear();
                 //window.open("/login", "_self");
                 var d = new Date();
                 var link =
