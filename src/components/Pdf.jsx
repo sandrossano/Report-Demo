@@ -66,7 +66,7 @@ class Pdf extends React.Component {
       rows.push(temp);
     }
     var img = new Image();
-    img.src = "../logokey.png";
+    img.src = "../logo2.png";
     pdf.addImage(img, "png", 200, 25, 150, 25);
     pdf.setFontSize(16);
     pdf.setFont("Times", "bold");
