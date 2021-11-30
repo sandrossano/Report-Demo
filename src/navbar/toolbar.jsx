@@ -13,6 +13,7 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import SearchIcon from "@material-ui/icons/Search";
+import HomeIcon from "@material-ui/icons/Home";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
@@ -166,10 +167,10 @@ const ToolbarComponent = (props) => {
       >
         <IconButton aria-label="Exit" color="inherit">
           <Badge badgeContent={0} color="secondary">
-            <PowerSettingsNewIcon />
+            <HomeIcon />
           </Badge>
         </IconButton>
-        <p style={{ padding: "10px 0 0" }}>Esci</p>
+        <p style={{ padding: "15px 0 0" }}>Portale</p>
       </MenuItem>
       {/* 
       <MenuItem>
@@ -257,11 +258,18 @@ const ToolbarComponent = (props) => {
               style={{ marginLeft: "10px" }}
               onClick={() => {
                 sessionStorage.clear();
-                window.open("/login", "_self");
+                //window.open("/login", "_self");
+                var d = new Date();
+                var link =
+                  "https://demodash.awskeytech.com/?US=" +
+                  window.sessionStorage.getItem("user") +
+                  "&TK=" +
+                  CryptoJS.MD5(d.getHours() + d.getMinutes() + "").toString();
+                window.open(link, "_self");
               }}
             >
               <Badge badgeContent={0} color="secondary">
-                <PowerSettingsNewIcon />
+                <HomeIcon />
               </Badge>
             </IconButton>
             {/*

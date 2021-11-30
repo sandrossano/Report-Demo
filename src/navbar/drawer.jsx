@@ -15,6 +15,7 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import Icon from "../components/Icon";
 import { useHistory } from "react-router";
+import CryptoJS from "crypto-js";
 
 const items1 = [
   //  { title: "Dashboard", icon: "dashboard", link: "/" },
@@ -95,6 +96,31 @@ const DrawerComponent = (props) => {
             </ListItem>
           </Link>
         ))}
+        <ListItem
+          button
+          key={"Torna al Portale"}
+          onClick={() => {
+            sessionStorage.clear();
+            //window.open("/login", "_self");
+            var d = new Date();
+            var link =
+              "https://demodash.awskeytech.com/?US=" +
+              window.sessionStorage.getItem("user") +
+              "&TK=" +
+              CryptoJS.MD5(d.getHours() + d.getMinutes() + "").toString();
+            window.open(link, "_self");
+          }}
+        >
+          <ListItemIcon>
+            <Icon
+              size={32}
+              icon={"home"}
+              style={{ marginBottom: "5px" }}
+              type="color"
+            />
+          </ListItemIcon>
+          <ListItemText primary={"Torna al Portale"} />
+        </ListItem>
       </List>
     </div>
   );
