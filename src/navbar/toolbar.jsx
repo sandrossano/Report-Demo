@@ -17,6 +17,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import CryptoJS from "crypto-js";
 
 const styles = (theme) => ({
   grow: {
@@ -153,7 +154,14 @@ const ToolbarComponent = (props) => {
       <MenuItem
         onClick={() => {
           sessionStorage.clear();
-          window.open("/login", "_self");
+          //window.open("/login", "_self");
+          var d = new Date();
+          var link =
+            "https://demodash.awskeytech.com/?US=" +
+            window.sessionStorage.getItem("user") +
+            "&TK=" +
+            CryptoJS.MD5(d.getHours() + d.getMinutes() + "").toString();
+          window.open(link, "_self");
         }}
       >
         <IconButton aria-label="Exit" color="inherit">
