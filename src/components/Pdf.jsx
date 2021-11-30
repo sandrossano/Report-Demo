@@ -124,8 +124,8 @@ class Pdf extends React.Component {
     if (y >= pageHeight) {
       pdf.addPage();
       y = 0; // Restart height position
+      pdf.addImage(img, "png", 200, 25, 150, 25);
     }
-    pdf.addImage(img, "png", 222, 25, 150, 25);
 
     this.setState({
       iFrameHeight: window.innerHeight - 250 + "px",
