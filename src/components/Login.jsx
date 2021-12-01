@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Toast from "toast-me";
 import Button from "react-bootstrap-button-loader";
 import CryptoJS from "crypto-js";
+import PasswordField from "material-ui-password-field";
 
 class Login extends React.Component {
   constructor(props) {
@@ -121,8 +122,8 @@ class Login extends React.Component {
               <label htmlFor="userpassword" className="control-Element">
                 Password
               </label>
-              <input
-                type="password"
+              <PasswordField
+                //type="password"
                 className="login-control"
                 id="password"
                 onChange={(event) => this.inputChangedHandler(event)}

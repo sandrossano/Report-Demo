@@ -26,6 +26,7 @@
     "jspdf-autotable": "3.5.23",
     "jszip": "3.7.1",
     "material-table": "1.69.3",
+    "material-ui-password-field": "2.1.2",
     "pdf-viewer-reactjs": "2.2.3",
     "pdfjs-dist": "2.10.377",
     "prop-types": "15.7.2",
