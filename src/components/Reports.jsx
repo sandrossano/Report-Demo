@@ -27,6 +27,7 @@ const employees = service.getEmployees();
 class Reports extends React.Component {
   constructor(props) {
     super(props);
+    this.gridRef = React.createRef();
     this.calndar = {};
     this.state = {
       visiblePopup: false,
@@ -38,6 +39,7 @@ class Reports extends React.Component {
       employees: employees
     };
   }
+
   onTodoChange(id, value) {
     if (id === "hh") this.setState({ hh: value });
     if (id === "date1") this.setState({ date1: value });
@@ -76,6 +78,20 @@ class Reports extends React.Component {
     });
     console.log(dateString);
     console.log(value);
+  }
+
+  salvaVariante() {
+    var array = this.gridRef.current.instance.getVisibleColumns();
+    var visibile = [];
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].name) {
+        if (array[i].name !== "" && array[i].visible === true) {
+          visibile.push(array[i].name);
+        }
+      }
+      //console.log(array[i]);
+    }
+    console.log(visibile);
   }
 
   render() {
@@ -126,6 +142,7 @@ class Reports extends React.Component {
           columnHidingEnabled={true}
           showBorders={true}
           allowColumnReordering={true}
+          ref={this.gridRef}
           defaultFilterValue={filterValue}
         >
           {/*<SearchPanel visible={true} />*/}
@@ -140,7 +157,11 @@ class Reports extends React.Component {
             cellRender={cellRender}
             caption={""}
           />
-          <Column dataField={"PlantId"} caption={"Id Impianto"} />
+          <Column
+            dataField={"PlantId"}
+            caption={"Id Impianto"}
+            visible={false}
+          />
           <Column dataField={"Local"} caption={"Località Fornitura"} />
           <Column
             hidingPriority={0}
@@ -175,16 +196,20 @@ class Reports extends React.Component {
                 onClick={(e) => this.exportGrid(e)}
               />
             </Item>*/}
-            <Item location="before"></Item>
-            <Item>
+            <Item location="before" name="searchPanel"></Item>
+
+            <Item location="after">
               <Button
-                icon="email"
-                text="Send"
-                onClick={(e) => this.exportGrid(e)}
+                icon="columnfield"
+                onClick={(e) => this.salvaVariante()}
               />
+              &nbsp;
+              <Button icon="save" onClick={(e) => this.salvaVariante()} />
+              &nbsp;
+              <Button icon="email" onClick={(e) => this.exportGrid(e)} />
             </Item>
             <Item name="columnChooserButton" />
-            <Item name="searchPanel" />
+            <Item />
           </Toolbar>
           <ColumnChooser enabled={true} mode="select" />
           <Template name={"buttons"}>
