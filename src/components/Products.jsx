@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import COLORS from "../constants/colors";
 import DataGrid, {
   Column,
@@ -42,6 +43,33 @@ class Products extends React.Component {
       stati: []
     };
   }
+
+  componentDidMount() {
+    //var email = window.sessionStorage.getItem("user");
+    var variant = [];
+    var stati = [];
+    var link =
+      "https://keytech-demo-backend.herokuapp.com/api/getvariant/PRODUCT";
+    axios.get(link).then(
+      (result) => {
+        for (let i = 0; i < result.data.length; i++) {
+          variant.push(result.data[i].variant);
+          stati.push(result.data[i].state);
+        }
+
+        this.setState({ stati: stati, variant: variant });
+      },
+      // Nota: è importante gestire gli errori qui
+      // invece di un blocco catch() in modo da non fare passare
+      // eccezioni da bug reali nei componenti.
+      (error) => {
+        this.setState({
+          //items: []
+        });
+      }
+    );
+  }
+
   onTodoChange(id, value) {
     if (id === "hh") this.setState({ hh: value });
     if (id === "date1") this.setState({ date1: value });
@@ -65,10 +93,31 @@ class Products extends React.Component {
     var filter = this.gridRef.current.instance.state();
     //console.log(visibile);
     var obj = JSON.stringify(filter);
-    var stati = this.state.stati;
+    var link =
+      "https://keytech-demo-backend.herokuapp.com/api/createvariant/" +
+      "PRODUCT" +
+      "~" +
+      nome +
+      "~" +
+      window.sessionStorage.getItem("user") +
+      "~" +
+      obj;
+    axios.get(link).then(
+      (result) => {
+        var stati = this.state.stati;
 
-    stati.push(obj);
-    variant.push(nome);
+        stati.push(obj);
+        variant.push(nome);
+      },
+      // Nota: è importante gestire gli errori qui
+      // invece di un blocco catch() in modo da non fare passare
+      // eccezioni da bug reali nei componenti.
+      (error) => {
+        this.setState({
+          //items: []
+        });
+      }
+    );
   }
   apriVariante() {
     this.setState({
@@ -95,6 +144,44 @@ class Products extends React.Component {
     this.setState({
       openVariant: false
     });
+  }
+  deleteVariante(item) {
+    var variant = this.state.variant;
+    var pos = 0;
+    for (let i = 0; i < variant.length; i++) {
+      if (variant[i] === item) {
+        pos = i;
+        break;
+      }
+    }
+    //var expr = JSON.parse(this.state.stati[pos]);
+    //this.gridRef.current.instance.clearFilter();
+    var stati = this.state.stati;
+
+    var link =
+      "https://keytech-demo-backend.herokuapp.com/api/deletevariant/" +
+      "PRODUCT" +
+      "~" +
+      variant[pos];
+    axios.get(link).then(
+      (result) => {
+        delete variant[pos];
+        delete stati[pos];
+        this.setState({
+          variant: variant,
+          stati: stati,
+          openVariant: false
+        });
+      },
+      // Nota: è importante gestire gli errori qui
+      // invece di un blocco catch() in modo da non fare passare
+      // eccezioni da bug reali nei componenti.
+      (error) => {
+        this.setState({
+          //items: []
+        });
+      }
+    );
   }
   render() {
     function cellRender(data) {
@@ -191,7 +278,11 @@ class Products extends React.Component {
                     {item}
                     {this.state.openVariant ? (
                       <ListItemSecondaryAction>
-                        <IconButton edge="end" aria-label="delete">
+                        <IconButton
+                          onClick={(e) => this.deleteVariante(item)}
+                          edge="end"
+                          aria-label="delete"
+                        >
                           <DeleteIcon />
                         </IconButton>
                       </ListItemSecondaryAction>
