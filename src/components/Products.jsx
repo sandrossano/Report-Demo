@@ -51,7 +51,7 @@ class Products extends React.Component {
 
   salvaVariante() {
     var nome = prompt("Inserire nome Variante");
-    if (nome === undefined || nome === "") {
+    if (nome === undefined || nome === "" || nome === null) {
       return;
     }
     var variant = this.state.variant;
