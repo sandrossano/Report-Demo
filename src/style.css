@@ -287,3 +287,7 @@ html {
 .dx-datagrid-column-chooser-button {
   float: right;
 }
+.MuiMenu-paper {
+  top: 32.5vh !important;
+  left: 10px !important;
+}
