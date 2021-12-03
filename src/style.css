@@ -272,5 +272,18 @@ html {
   background-color: #fff;
 }
 .dx-toolbar .dx-toolbar-items-container {
-  height: 50px !important;
+  height: 70px !important;
+}
+.dx-toolbar-item {
+  display: table-footer-group !important;
+}
+.dx-datagrid-search-panel {
+  margin-left: 0px !important;
+  width: 75% !important;
+}
+.dx-datagrid-header-panel .dx-toolbar-menu-container .dx-button {
+  display: none !important;
+}
+.dx-datagrid-column-chooser-button {
+  float: right;
 }

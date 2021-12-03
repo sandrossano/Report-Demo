@@ -20,6 +20,7 @@
     "bootstrap": "4.6.0",
     "crypto-js": "4.1.1",
     "devextreme": "21.2.3",
+    "devextreme-quill": "1.5.7",
     "devextreme-react": "21.2.3",
     "download-pdf": "0.1.6",
     "jspdf": "2.4.0",

@@ -9,12 +9,17 @@ import DataGrid, {
   FilterRow,
   Toolbar,
   FilterPanel,
+  StateStoring,
   Item
 } from "devextreme-react/data-grid";
 import { Template } from "devextreme-react/core/template";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
-//import { exportDataGrid as exportDataGridToPdf } from "devextreme/pdf_exporter";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import DeleteIcon from "@material-ui/icons/Delete";
+import IconButton from "@material-ui/core/IconButton";
 import Icon from "./Icon";
 import Button from "devextreme-react/button";
 import service from "./json.js";
@@ -28,6 +33,7 @@ class Reports extends React.Component {
   constructor(props) {
     super(props);
     this.gridRef = React.createRef();
+    this.headerFilter = React.createRef();
     this.calndar = {};
     this.state = {
       visiblePopup: false,
@@ -36,7 +42,10 @@ class Reports extends React.Component {
       date2: "2026-08-31",
       valueCheck: "all",
       employeesOld: employees,
-      employees: employees
+      employees: employees,
+      openVariant: false,
+      variant: [],
+      stati: []
     };
   }
 
@@ -81,19 +90,52 @@ class Reports extends React.Component {
   }
 
   salvaVariante() {
-    var array = this.gridRef.current.instance.getVisibleColumns();
-    var visibile = [];
-    for (let i = 0; i < array.length; i++) {
-      if (array[i].name) {
-        if (array[i].name !== "" && array[i].visible === true) {
-          visibile.push(array[i].name);
-        }
-      }
-      //console.log(array[i]);
+    var nome = prompt("Inserire nome Variante");
+    if (nome === undefined || nome === "") {
+      return;
     }
-    console.log(visibile);
-  }
+    var variant = this.state.variant;
+    for (let i = 0; i < variant.length; i++) {
+      if (variant[i] === nome) {
+        alert("Esiste già una variante con questo nome!");
+        return;
+      }
+    }
 
+    var filter = this.gridRef.current.instance.state();
+    //console.log(visibile);
+    var obj = JSON.stringify(filter);
+    var stati = this.state.stati;
+
+    stati.push(obj);
+    variant.push(nome);
+  }
+  apriVariante() {
+    this.setState({
+      openVariant: true
+    });
+  }
+  chiudiVariante() {
+    this.setState({
+      openVariant: false
+    });
+  }
+  caricaVariante(item) {
+    var variant = this.state.variant;
+    var pos = 0;
+    for (let i = 0; i < variant.length; i++) {
+      if (variant[i] === item) {
+        pos = i;
+        break;
+      }
+    }
+    var expr = JSON.parse(this.state.stati[pos]);
+    //this.gridRef.current.instance.clearFilter();
+    this.gridRef.current.instance.state(expr);
+    this.setState({
+      openVariant: false
+    });
+  }
   render() {
     function cellRender(data) {
       return (
@@ -111,6 +153,7 @@ class Reports extends React.Component {
       //      "or",
       //      ["Stato", "=", "error--v1"]
     ];
+    const dataSource = this.state.employees;
     return (
       <div>
         <div className="checkboxReport">
@@ -136,7 +179,7 @@ class Reports extends React.Component {
         </div>
         <DataGrid
           id={"grid-container"}
-          dataSource={this.state.employees}
+          dataSource={dataSource}
           keyExpr={"ID"}
           columnAutoWidth={false}
           columnHidingEnabled={true}
@@ -150,12 +193,13 @@ class Reports extends React.Component {
           <SearchPanel visible={true} width={200} />
           <FilterPanel visible={true} />
           <FilterRow visible={true} />
+          <StateStoring enabled={false} />
           <Column
             dataField="Stato"
-            width={45}
+            width={55}
             allowSorting={false}
             cellRender={cellRender}
-            caption={""}
+            caption={"Stato"}
           />
           <Column
             dataField={"PlantId"}
@@ -196,17 +240,51 @@ class Reports extends React.Component {
                 onClick={(e) => this.exportGrid(e)}
               />
             </Item>*/}
-            <Item location="before" name="searchPanel"></Item>
-
-            <Item location="after">
+            <Item location="before">
+              Varianti: &nbsp;
               <Button
-                icon="columnfield"
+                icon="folder"
+                hint="Carica Variante"
+                onClick={(e) => this.apriVariante()}
+              />
+              <Menu
+                id="simple-menu"
+                //anchorEl={anchorEl}
+                //keepMounted
+                open={this.state.openVariant}
+                onClose={(e) => this.chiudiVariante()}
+              >
+                {this.state.variant.map((item) => (
+                  <MenuItem
+                    style={{ minWidth: "150px" }}
+                    onClick={(e) => this.caricaVariante(item)}
+                  >
+                    {item}
+                    {this.state.openVariant ? (
+                      <ListItemSecondaryAction>
+                        <IconButton edge="end" aria-label="delete">
+                          <DeleteIcon />
+                        </IconButton>
+                      </ListItemSecondaryAction>
+                    ) : null}
+                  </MenuItem>
+                ))}
+              </Menu>
+              &nbsp;
+              <Button
+                icon="save"
+                hint="Salva Variante"
                 onClick={(e) => this.salvaVariante()}
               />
-              &nbsp;
-              <Button icon="save" onClick={(e) => this.salvaVariante()} />
-              &nbsp;
-              <Button icon="email" onClick={(e) => this.exportGrid(e)} />
+            </Item>
+            <Item location="before" name="searchPanel"></Item>
+
+            <Item>
+              <Button
+                icon="email"
+                text="Email"
+                onClick={(e) => this.exportGrid(e)}
+              />
             </Item>
             <Item name="columnChooserButton" />
             <Item />

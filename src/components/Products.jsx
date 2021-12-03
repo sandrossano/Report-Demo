@@ -8,12 +8,18 @@ import DataGrid, {
   ColumnChooser,
   FilterRow,
   Toolbar,
+  StateStoring,
+  FilterPanel,
   Item
 } from "devextreme-react/data-grid";
 import { Template } from "devextreme-react/core/template";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
-//import { exportDataGrid as exportDataGridToPdf } from "devextreme/pdf_exporter";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import DeleteIcon from "@material-ui/icons/Delete";
+import IconButton from "@material-ui/core/IconButton";
 import Icon from "./Icon";
 import Button from "devextreme-react/button";
 
@@ -24,12 +30,16 @@ const employees = service.getEmployees();
 class Products extends React.Component {
   constructor(props) {
     super(props);
+    this.gridRef = React.createRef();
     this.calndar = {};
     this.state = {
       visiblePopup: false,
       hh: 5,
       date1: "2021-09-01",
-      date2: "2026-08-31"
+      date2: "2026-08-31",
+      openVariant: false,
+      variant: [],
+      stati: []
     };
   }
   onTodoChange(id, value) {
@@ -39,6 +49,53 @@ class Products extends React.Component {
     console.log(value);
   }
 
+  salvaVariante() {
+    var nome = prompt("Inserire nome Variante");
+    if (nome === undefined || nome === "") {
+      return;
+    }
+    var variant = this.state.variant;
+    for (let i = 0; i < variant.length; i++) {
+      if (variant[i] === nome) {
+        alert("Esiste già una variante con questo nome!");
+        return;
+      }
+    }
+
+    var filter = this.gridRef.current.instance.state();
+    //console.log(visibile);
+    var obj = JSON.stringify(filter);
+    var stati = this.state.stati;
+
+    stati.push(obj);
+    variant.push(nome);
+  }
+  apriVariante() {
+    this.setState({
+      openVariant: true
+    });
+  }
+  chiudiVariante() {
+    this.setState({
+      openVariant: false
+    });
+  }
+  caricaVariante(item) {
+    var variant = this.state.variant;
+    var pos = 0;
+    for (let i = 0; i < variant.length; i++) {
+      if (variant[i] === item) {
+        pos = i;
+        break;
+      }
+    }
+    var expr = JSON.parse(this.state.stati[pos]);
+    //this.gridRef.current.instance.clearFilter();
+    this.gridRef.current.instance.state(expr);
+    this.setState({
+      openVariant: false
+    });
+  }
   render() {
     function cellRender(data) {
       return (
@@ -61,18 +118,21 @@ class Products extends React.Component {
           columnAutoWidth={false}
           columnHidingEnabled={true}
           showBorders={true}
+          ref={this.gridRef}
           allowColumnReordering={true}
         >
           {/*<SearchPanel visible={true} />*/}
           <HeaderFilter visible={true} />
           <SearchPanel visible={true} width={200} />
+          <FilterPanel visible={true} />
           <FilterRow visible={true} />
+          <StateStoring enabled={false} />
           <Column
             dataField="Stato"
             width={45}
             allowSorting={false}
             cellRender={cellRender}
-            caption={""}
+            caption={"Stato"}
           />
           <Column dataField={"PlantId"} caption={"Id Impianto"} />
           <Column dataField={"Local"} caption={"Località Fornitura"} />
@@ -109,15 +169,54 @@ class Products extends React.Component {
                 onClick={(e) => this.exportGrid(e)}
               />
             </Item>*/}
+            <Item location="before">
+              Varianti: &nbsp;
+              <Button
+                icon="folder"
+                hint="Carica Variante"
+                onClick={(e) => this.apriVariante()}
+              />
+              <Menu
+                id="simple-menu"
+                //anchorEl={anchorEl}
+                //keepMounted
+                open={this.state.openVariant}
+                onClose={(e) => this.chiudiVariante()}
+              >
+                {this.state.variant.map((item) => (
+                  <MenuItem
+                    style={{ minWidth: "150px" }}
+                    onClick={(e) => this.caricaVariante(item)}
+                  >
+                    {item}
+                    {this.state.openVariant ? (
+                      <ListItemSecondaryAction>
+                        <IconButton edge="end" aria-label="delete">
+                          <DeleteIcon />
+                        </IconButton>
+                      </ListItemSecondaryAction>
+                    ) : null}
+                  </MenuItem>
+                ))}
+              </Menu>
+              &nbsp;
+              <Button
+                icon="save"
+                hint="Salva Variante"
+                onClick={(e) => this.salvaVariante()}
+              />
+            </Item>
+            <Item location="before" name="searchPanel"></Item>
+
             <Item>
               <Button
                 icon="email"
-                text="Send"
+                text="Email"
                 onClick={(e) => this.exportGrid(e)}
               />
             </Item>
             <Item name="columnChooserButton" />
-            <Item name="searchPanel" />
+            <Item />
           </Toolbar>
           <ColumnChooser enabled={true} mode="select" />
           <Template name={"buttons"}>

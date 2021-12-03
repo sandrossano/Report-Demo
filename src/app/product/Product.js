@@ -11,7 +11,7 @@ const Container = styled.div`
 
 const Product = () => {
   return (
-    <Container>
+    <Container fluid style={{ overflowY: "scroll" }}>
       <div style={{ padding: "0 10px" }}>
         <Page.Title>Scandenziario</Page.Title>
         <Products />

@@ -14,7 +14,7 @@ const Reports = () => {
   return (
     <Container2 fluid style={{ overflowY: "scroll" }}>
       <div style={{ padding: "0 10px" }}>
-        <Page.Title>Reports</Page.Title>
+        {/*<Page.Title>Reports</Page.Title>*/}
         <MainSection />
       </div>
     </Container2>
