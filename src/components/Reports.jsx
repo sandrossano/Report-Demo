@@ -3,6 +3,7 @@ import COLORS from "../constants/colors";
 import axios from "axios";
 import DataGrid, {
   Column,
+  Export,
   MasterDetail,
   HeaderFilter,
   SearchPanel,
@@ -27,6 +28,11 @@ import service from "./json.js";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import { FormControl, FormControlLabel } from "@material-ui/core";
+import { Workbook } from "exceljs";
+import { saveAs } from "file-saver-es";
+// Our demo infrastructure requires us to use 'file-saver-es'.
+// We recommend that you use the official 'file-saver' package in your applications.
+import { exportDataGrid } from "devextreme/excel_exporter";
 
 const employees = service.getEmployees();
 
@@ -36,6 +42,7 @@ class Reports extends React.Component {
     this.gridRef = React.createRef();
     this.headerFilter = React.createRef();
     this.calndar = {};
+    this.onExporting = this.onExporting.bind(this);
     this.state = {
       visiblePopup: false,
       hh: 5,
@@ -271,6 +278,7 @@ class Reports extends React.Component {
           allowColumnReordering={true}
           ref={this.gridRef}
           defaultFilterValue={filterValue}
+          onExporting={this.onExporting}
         >
           {/*<SearchPanel visible={true} />*/}
           <HeaderFilter visible={true} />
@@ -365,7 +373,6 @@ class Reports extends React.Component {
                 onClick={(e) => this.salvaVariante()}
               />
             </Item>
-            <Item location="before" name="searchPanel"></Item>
 
             <Item>
               <Button
@@ -374,10 +381,12 @@ class Reports extends React.Component {
                 onClick={(e) => this.exportGrid(e)}
               />
             </Item>
-            <Item name="columnChooserButton" />
-            <Item />
+            <Item name="exportButton" locateInMenu="auto" cssClass="export" />
+            <Item location="before" name="searchPanel"></Item>
+            <Item name="columnChooserButton" locateInMenu="auto" />
           </Toolbar>
           <ColumnChooser enabled={true} mode="select" />
+
           <Template name={"buttons"}>
             <Button
               text={"Edit"}
@@ -389,6 +398,7 @@ class Reports extends React.Component {
               //onClick={this.clickHandler}
             />
           </Template>
+          <Export enabled={true} />
         </DataGrid>
 
         {this.state.visiblePopup && (
@@ -518,6 +528,26 @@ class Reports extends React.Component {
       </div>
     );
   }
+
+  onExporting(e) {
+    const workbook = new Workbook();
+    const worksheet = workbook.addWorksheet("Main sheet");
+
+    exportDataGrid({
+      component: e.component,
+      worksheet,
+      autoFilterEnabled: true
+    }).then(() => {
+      workbook.xlsx.writeBuffer().then((buffer) => {
+        saveAs(
+          new Blob([buffer], { type: "application/octet-stream" }),
+          "DataGrid.xlsx"
+        );
+      });
+    });
+    e.cancel = true;
+  }
+
   /*  const dataGridRef = React.createRef();
   const exportGrid = React.useCallback(() => {
     const doc = new jsPDF();

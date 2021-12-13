@@ -23,6 +23,8 @@
     "devextreme-quill": "1.5.7",
     "devextreme-react": "21.2.3",
     "download-pdf": "0.1.6",
+    "exceljs": "4.3.0",
+    "file-saver-es": "2.0.5",
     "jspdf": "2.4.0",
     "jspdf-autotable": "3.5.23",
     "jszip": "3.7.1",

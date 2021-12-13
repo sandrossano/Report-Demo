@@ -291,3 +291,6 @@ html {
   top: 32.5vh !important;
   left: 10px !important;
 }
+.export {
+  position: fixed;
+}
